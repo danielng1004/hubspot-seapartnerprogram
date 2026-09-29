@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HubSpot Solutions Partner Program 2026 — SEA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ff: #FF7A59;
+    --ff-light: #FFF1EE;
+    --ink: #1A1A2E;
+    --ink-mid: #4A4A6A;
+    --ink-soft: #8888AA;
+    --rule: #E2E2EE;
+    --bg: #F7F7FC;
+    --white: #FFFFFF;
+    --gold: #C9A83C;
+    --gold-bg: #FDF8EC;
+    --green: #00BFA5;
+    --tier-elite: #1A1A2E;
+    --tier-diamond: #5B5BD6;
+    --tier-platinum: #888;
+    --tier-gold: #C9A83C;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  html, body { height: 100%; background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+
+  /* HEADER */
+  .header {
+    background: var(--ink);
+    color: var(--white);
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .header-badge {
+    display: inline-block;
+    background: var(--ff);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .header h1 span { color: var(--ff); }
+  .header .sub {
+    color: #AAAACC;
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  .header-cta {
+    display: inline-block;
+    background: var(--ff);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity .15s;
+  }
+  .header-cta:hover { opacity: .88; }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 48px 0 0; }
+  .section:last-child { padding-bottom: 64px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--ff);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  /* ENTRY BOX */
+  .entry-box {
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 28px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .entry-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--ff);
+    line-height: 1;
+  }
+  .entry-price small { font-size: 16px; color: var(--ink-mid); font-family: 'DM Sans', sans-serif; }
+  .entry-reqs { flex: 1; min-width: 220px; }
+  .entry-reqs p { font-size: 13px; color: var(--ink-mid); margin-bottom: 10px; }
+  .req-list { list-style: none; }
+  .req-list li {
+    font-size: 13px;
+    color: var(--ink);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .req-list li:last-child { border-bottom: none; }
+  .req-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* TIERS TABLE */
+  .tiers-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--rule);
+  }
+  .tiers-table th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    color: var(--ink-soft);
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--bg);
+    border-bottom: 1.5px solid var(--rule);
+  }
+  .tiers-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tiers-table tr:last-child td { border-bottom: none; }
+  .tier-name {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tier-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-elite { background: var(--tier-elite); }
+  .dot-diamond { background: var(--tier-diamond); }
+  .dot-platinum { background: var(--tier-platinum); }
+  .dot-gold { background: var(--tier-gold); }
+  .dot-entry { background: var(--rule); border: 1.5px solid var(--ink-soft); }
+
+  /* COMMISSION CARDS */
+  .commission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .commission-card {
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .commission-card.highlight {
+    border-color: var(--ff);
+    background: var(--ff-light);
+  }
+  .comm-pct {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    color: var(--ff);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .comm-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .comm-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+  .comm-note {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: var(--bg);
+    border-radius: 4px;
+    padding: 6px 10px;
+    line-height: 1.4;
+  }
+
+  /* MULTIPLIER */
+  .multiplier-box {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 32px;
+    color: var(--white);
+  }
+  .multiplier-box .section-label { color: var(--ff); }
+  .mult-2x {
+    font-family: 'DM Serif Display', serif;
+    font-size: 64px;
+    color: var(--ff);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .mult-sub { font-size: 14px; color: #AAAACC; margin-bottom: 24px; }
+  .mult-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .mult-table th {
+    color: #AAAACC;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid #333355;
+  }
+  .mult-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #333355;
+    color: #DDDDFF;
+  }
+  .mult-table td.hi { color: var(--ff); font-weight: 600; }
+  .mult-table tr:last-child td { border-bottom: none; }
+  .countries {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #7777AA;
+    line-height: 1.7;
+  }
+
+  /* BENEFITS */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+  }
+  .benefit-item {
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .benefit-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .benefit-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+  .benefit-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    background: var(--gold-bg);
+    color: var(--gold);
+  }
+
+  /* STEPS */
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--ff);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-body { font-size: 14px; color: var(--ink); padding-top: 5px; line-height: 1.5; }
+
+  /* CTA FOOTER */
+  .cta-footer {
+    background: var(--ff);
+    color: var(--white);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .cta-footer h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    margin-bottom: 10px;
+  }
+  .cta-footer p { font-size: 14px; opacity: .88; margin-bottom: 24px; }
+  .cta-footer a {
+    display: inline-block;
+    background: var(--white);
+    color: var(--ff);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0 6px 8px;
+  }
+  .cta-footer a.ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,.5);
+  }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--rule); margin: 0; }
+
+  @media (max-width: 500px) {
+    .entry-box { flex-direction: column; }
+    .tiers-table th:nth-child(4),
+    .tiers-table td:nth-child(4) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-badge">SEA Market · 2026</div>
+  <h1>HubSpot Solutions<br><span>Partner Program</span></h1>
+  <p class="sub">Membership, tiers & commission — Southeast Asia</p>
+  <a href="mailto:dang@hubspot.com" class="header-cta">Email Daniel →</a>
+  <a href="https://calendar.app.google/pMvjfQm5zyniSN4f6" class="header-cta" target="_blank" style="margin-left:10px;background:transparent;border:1.5px solid rgba(255,255,255,.5);">Book Time →</a>
+</header>
+
+<main>
+<div class="container">
+
+  <!-- TIERS -->
+  <div class="section">
+    <div class="section-label">Tiers</div>
+    <h2 class="section-title">5 Partner Tiers</h2>
+    <table class="tiers-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Sourced Pts</th>
+          <th>Total Pts</th>
+          <th>GRR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="tier-name"><span class="tier-dot dot-elite"></span>Elite</div></td>
+          <td>2,750</td><td>11,000</td><td>≥80%</td>
+        </tr>
+        <tr>
+          <td><div class="tier-name"><span class="tier-dot dot-diamond"></span>Diamond</div></td>
+          <td>1,250</td><td>3,750</td><td>≥75%</td>
+        </tr>
+        <tr>
+          <td><div class="tier-name"><span class="tier-dot dot-platinum"></span>Platinum</div></td>
+          <td>425</td><td>1,275</td><td>—</td>
+        </tr>
+        <tr>
+          <td><div class="tier-name"><span class="tier-dot dot-gold"></span>Gold</div></td>
+          <td>115</td><td>345</td><td>—</td>
+        </tr>
+        <tr>
+          <td><div class="tier-name"><span class="tier-dot dot-entry"></span>Solutions Partner</div></td>
+          <td>—</td><td>—</td><td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- COMMISSION -->
+  <div class="section">
+    <div class="section-label">Revenue Share</div>
+    <h2 class="section-title">Commission Structure</h2>
+    <div class="commission-grid">
+      <div class="commission-card highlight">
+        <div class="comm-pct">20%</div>
+        <div class="comm-title">Sourced Deal Commission</div>
+        <div class="comm-desc">On all partner-sourced MRR including upsell, for 3 years of the customer's license.</div>
+        <div class="comm-note">Partner matching starts at Gold+</div>
+      </div>
+      <div class="commission-card" style="border-color:#5B5BD6;background:#F0F0FF;">
+        <div class="comm-pct" style="color:#5B5BD6;">20%</div>
+        <div class="comm-title">Upmarket Referral</div>
+        <div class="comm-desc">Assisted deals ≥ $3K MRR, Professional or Enterprise tier, for new or existing customers.</div>
+        <div class="comm-note" style="background:#E4E4F8;color:#5B5BD6;">Requires Platinum+ and CRM Implementation Accreditation. Valid 1 year from sale date.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- SEA MULTIPLIER -->
+  <div class="section">
+    <div class="multiplier-box">
+      <div class="section-label">SEA Advantage</div>
+      <div class="mult-2x">2×</div>
+      <div class="mult-sub">Points multiplier for all SEA market deals</div>
+      <p style="font-size:13px;color:#CCCCEE;line-height:1.65;margin-bottom:20px;">Points are earned on every deal you source, assist, or manage — and they count toward your tier over a trailing 12-month window. As a SEA-focused partner, every deal you close earns <strong style="color:var(--ff);">double the standard points</strong>, so you climb tiers roughly twice as fast. Points are determined by the <em>customer's</em> location, not yours — sell to any of the qualifying SEA countries below and the 2× multiplier applies automatically.</p>
+      <table class="mult-table">
+        <thead>
+          <tr>
+            <th>Deal Type</th>
+            <th>Standard per $100</th>
+            <th style="color:var(--ff);">SEA per $100</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sourced deal (you bring the customer)</td>
+            <td>3 pts</td>
+            <td class="hi">6 pts</td>
+          </tr>
+          <tr>
+            <td>Assisted deal (HubSpot-sourced, you help close)</td>
+            <td>3 pts</td>
+            <td class="hi">6 pts</td>
+          </tr>
+          <tr>
+            <td>Managed (servicing existing portal)</td>
+            <td>1 pt</td>
+            <td class="hi">2 pts</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- POINTS CALCULATOR -->
+      <div style="margin-top:28px;background:#12122A;border-radius:8px;padding:24px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;color:var(--ff);margin-bottom:12px;text-transform:uppercase;">Points Estimator</div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+          <label style="font-size:13px;color:#AAAACC;">Monthly deal value (USD)</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="color:#AAAACC;font-size:16px;">$</span>
+            <input id="dealVal" type="number" value="1000" min="100" step="100"
+              style="width:110px;background:#1E1E40;border:1px solid #333355;border-radius:4px;padding:8px 10px;color:#fff;font-size:15px;font-family:inherit;outline:none;" oninput="calcPts()">
+            <span style="color:#AAAACC;font-size:13px;">/mo MRR</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <!-- Sourced row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;">
+              <div style="font-size:10px;color:#7777AA;margin-bottom:4px;letter-spacing:.04em;">SOURCED — STD</div>
+              <div id="r1" style="font-size:24px;font-weight:700;color:#AAAACC;">30 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;">3 pts per $100</div>
+            </div>
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;border:1px solid #FF7A5933;">
+              <div style="font-size:10px;color:var(--ff);margin-bottom:4px;letter-spacing:.04em;">SOURCED — SEA</div>
+              <div id="r2" style="font-size:24px;font-weight:700;color:var(--ff);">60 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;">6 pts per $100</div>
+            </div>
+          </div>
+          <!-- Assisted row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;">
+              <div style="font-size:10px;color:#7777AA;margin-bottom:4px;letter-spacing:.04em;">ASSISTED — STD</div>
+              <div id="r3" style="font-size:24px;font-weight:700;color:#AAAACC;">30 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;">3 pts per $100</div>
+            </div>
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;border:1px solid #FF7A5933;">
+              <div style="font-size:10px;color:var(--ff);margin-bottom:4px;letter-spacing:.04em;">ASSISTED — SEA</div>
+              <div id="r4" style="font-size:24px;font-weight:700;color:var(--ff);">60 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;">6 pts per $100</div>
+            </div>
+          </div>
+          <!-- Managed row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;">
+              <div style="font-size:10px;color:#7777AA;margin-bottom:4px;letter-spacing:.04em;">MANAGED — STD</div>
+              <div id="r5" style="font-size:24px;font-weight:700;color:#AAAACC;">10 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;">1 pt per $100</div>
+            </div>
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;border:1px solid #FF7A5933;">
+              <div style="font-size:10px;color:var(--ff);margin-bottom:4px;letter-spacing:.04em;">MANAGED — SEA</div>
+              <div id="r6" style="font-size:24px;font-weight:700;color:var(--ff);">20 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;">2 pts per $100</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#555577;">Points = (MRR ÷ 100) × rate. SEA rate is 2× standard.</div>
+      </div>
+      <script>
+        function calcPts() {
+          var v = parseFloat(document.getElementById('dealVal').value) || 0;
+          var u = v / 100;
+          document.getElementById('r1').textContent = Math.round(u * 3) + ' pts';
+          document.getElementById('r2').textContent = Math.round(u * 6) + ' pts';
+          document.getElementById('r3').textContent = Math.round(u * 3) + ' pts';
+          document.getElementById('r4').textContent = Math.round(u * 6) + ' pts';
+          document.getElementById('r5').textContent = Math.round(u * 1) + ' pts';
+          document.getElementById('r6').textContent = Math.round(u * 2) + ' pts';
+        }
+      </script>
+
+      <div class="countries" style="margin-top:20px;"><strong style="color:#AAAACC;">Qualifying countries:</strong> Bangladesh · Brunei · Cambodia · China/Taiwan · Hong Kong · India · Indonesia · Laos · Malaysia · Maldives · Mongolia · Myanmar · Nepal · Pakistan · Philippines · Singapore · South Korea · Sri Lanka · Thailand · Timor-Leste · Vietnam</div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- MEMBERSHIP ENTRY -->
+  <div class="section">
+    <div class="section-label">Entry</div>
+    <h2 class="section-title">Membership &amp; Requirements</h2>
+    <div class="entry-box">
+      <div>
+        <div class="entry-price">$400<small>/mo USD</small></div>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:6px;max-width:200px;">Net HubSpot subscription meets or exceeds $400/month USD after discounts</p>
+      </div>
+      <div class="entry-reqs">
+        <p>To qualify, partners must:</p>
+        <ul class="req-list">
+          <li>Sign the HubSpot Solutions Partner Agreement (HSPPA)</li>
+          <li>Complete the Solutions Partner certification</li>
+          <li>Maintain &gt;0 sourced points in a trailing 12-month period</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- BENEFITS -->
+  <div class="section">
+    <div class="section-label">What You Get</div>
+    <h2 class="section-title">Key Partner Benefits</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-title">Co-sell with HubSpot Sales</div>
+        <div class="benefit-desc">Register deals to protect commissions. SEA-based GS teams co-sell alongside you.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Dedicated PDM</div>
+        <div class="benefit-desc">Your own Partner Development Manager — SE support on qualifying complex deals.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Waive Client Onboarding Fees</div>
+        <div class="benefit-desc">Deliver HubSpot onboarding yourself — removes the mandatory fee for your clients.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Demo Portal + Monthly AI Credits</div>
+        <div class="benefit-desc">1× Enterprise demo account plus credits to demo AI agents and features to prospects.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Free Partner Seat</div>
+        <div class="benefit-desc">Access client portals for delivery at no cost to you or your client.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Partner Matching Referrals</div>
+        <div class="benefit-desc">HubSpot GS &amp; CSMs connect customers to you based on tier, accreditations &amp; track record.</div>
+        <span class="benefit-tag">Gold+</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Co-marketing (MDF)</div>
+        <div class="benefit-desc">Apply for co-marketing funds and joint campaigns to build local pipeline.</div>
+        <span class="benefit-tag">Platinum+</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Solutions Directory Listing</div>
+        <div class="benefit-desc">Get discovered by SEA buyers — showcase industry, geography &amp; accreditations on HubSpot.com.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title">Exclusive Training &amp; Certs</div>
+        <div class="benefit-desc">Partner-gated Academy content. CRM Implementation accreditation unlocks higher commissions.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- HOW TO JOIN -->
+  <div class="section">
+    <div class="section-label">Getting Started</div>
+    <h2 class="section-title">How to Join or Upgrade</h2>
+    <ul class="steps">
+      <li class="step"><div class="step-num">1</div><div class="step-body">Check your current HubSpot product subscription level</div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-body">If ≥ USD $400/mo net — membership fee is waived automatically</div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-body">Enroll in the partner program</div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-body">Get your PDM assigned and start registering deals</div></li>
+      <li class="step"><div class="step-num">5</div><div class="step-body">Get CRM Implementation Accredited to unlock the Upmarket 20% commission</div></li>
+      <li class="step"><div class="step-num">6</div><div class="step-body">Sell to SEA customers — earn 2× points toward higher tiers</div></li>
+    </ul>
+  </div>
+
+</div><!-- /container -->
+</main>
+
+<footer class="cta-footer">
+  <h2>Ready to Join or Upgrade?</h2>
+  <p>Daniel Ng · Regional Lead, Partnerships SEA</p>
+  <a href="mailto:dang@hubspot.com">Email Daniel</a>
+  <a href="https://calendar.app.google/pMvjfQm5zyniSN4f6" target="_blank">Book Time</a>
+  <a href="https://hubspot.com/partners/solutions" class="ghost" target="_blank">Learn More</a>
+  <p style="margin-top:20px;font-size:11px;opacity:.55;">HubSpot Solutions Partner Program 2026 · SEA Market · hubspot.com/solutions-partners-tiers-and-benefits-2026</p>
+</footer>
+
+</body>
+</html>
