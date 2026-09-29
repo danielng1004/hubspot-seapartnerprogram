@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HubSpot Solutions Partner Program 2026 — SEA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ff: #FF7A59; --ff-light: #FFF1EE; --ink: #1A1A2E; --ink-mid: #4A4A6A;
+    --ink-soft: #8888AA; --rule: #E2E2EE; --bg: #F7F7FC; --white: #FFFFFF;
+    --gold: #C9A83C; --gold-bg: #FDF8EC; --green: #00BFA5;
+    --tier-elite: #1A1A2E; --tier-diamond: #5B5BD6; --tier-platinum: #888; --tier-gold: #C9A83C;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+
+  /* LANG SWITCHER */
+  .lang-bar {
+    background: var(--ink);
+    border-bottom: 1px solid #333355;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 100;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid #333355;
+    color: #AAAACC;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .lang-btn:hover { border-color: var(--ff); color: var(--ff); }
+  .lang-btn.active { background: var(--ff); border-color: var(--ff); color: #fff; }
+
+  /* HEADER */
+  .header { background: var(--ink); color: var(--white); padding: 48px 24px 40px; text-align: center; }
+  .header-badge { display: inline-block; background: var(--ff); color: var(--white); font-size: 11px; font-weight: 600; letter-spacing: .06em; padding: 4px 12px; border-radius: 2px; margin-bottom: 20px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 46px); line-height: 1.15; margin-bottom: 10px; }
+  .header h1 span { color: var(--ff); }
+  .header .sub { color: #AAAACC; font-size: 15px; margin-bottom: 28px; }
+  .header-cta { display: inline-block; background: var(--ff); color: var(--white); font-weight: 600; font-size: 14px; padding: 12px 28px; border-radius: 4px; text-decoration: none; transition: opacity .15s; }
+  .header-cta:hover { opacity: .88; }
+  .header-cta.ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.4); margin-left: 8px; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 48px 0 0; }
+  .section:last-child { padding-bottom: 64px; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; color: var(--ff); margin-bottom: 16px; text-transform: uppercase; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 3.5vw, 28px); color: var(--ink); margin-bottom: 24px; }
+
+  .entry-box { background: var(--white); border: 1.5px solid var(--rule); border-radius: 8px; padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .entry-price { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--ff); line-height: 1; }
+  .entry-price small { font-size: 16px; color: var(--ink-mid); font-family: 'DM Sans', sans-serif; }
+  .entry-reqs { flex: 1; min-width: 220px; }
+  .entry-reqs p { font-size: 13px; color: var(--ink-mid); margin-bottom: 10px; }
+  .req-list { list-style: none; }
+  .req-list li { font-size: 13px; color: var(--ink); padding: 5px 0; border-bottom: 1px solid var(--rule); display: flex; align-items: flex-start; gap: 8px; }
+  .req-list li:last-child { border-bottom: none; }
+  .req-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  .tiers-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 8px; overflow: hidden; border: 1.5px solid var(--rule); }
+  .tiers-table th { font-size: 11px; font-weight: 600; letter-spacing: .05em; color: var(--ink-soft); text-align: left; padding: 12px 16px; background: var(--bg); border-bottom: 1.5px solid var(--rule); }
+  .tiers-table td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid var(--rule); }
+  .tiers-table tr:last-child td { border-bottom: none; }
+  .tier-name { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .tier-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot-elite { background: var(--tier-elite); }
+  .dot-diamond { background: var(--tier-diamond); }
+  .dot-platinum { background: var(--tier-platinum); }
+  .dot-gold { background: var(--tier-gold); }
+  .dot-entry { background: var(--rule); border: 1.5px solid var(--ink-soft); }
+
+  .commission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .commission-card { background: var(--white); border: 1.5px solid var(--rule); border-radius: 8px; padding: 24px; }
+  .commission-card.highlight { border-color: var(--ff); background: var(--ff-light); }
+  .commission-card.upmarket { border-color: var(--tier-diamond); background: #F0F0FF; }
+  .comm-pct { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--ff); line-height: 1; margin-bottom: 6px; }
+  .commission-card.upmarket .comm-pct { color: var(--tier-diamond); }
+  .comm-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .comm-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+  .comm-note { margin-top: 10px; font-size: 11px; color: var(--ink-soft); background: var(--bg); border-radius: 4px; padding: 6px 10px; line-height: 1.4; }
+
+  .multiplier-box { background: var(--ink); border-radius: 8px; padding: 32px; color: var(--white); }
+  .mult-2x { font-family: 'DM Serif Display', serif; font-size: 64px; color: var(--ff); line-height: 1; margin-bottom: 4px; }
+  .mult-sub { font-size: 14px; color: #AAAACC; margin-bottom: 24px; }
+  .mult-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .mult-table th { color: #AAAACC; font-weight: 500; font-size: 11px; text-align: left; padding: 6px 10px; border-bottom: 1px solid #333355; }
+  .mult-table td { padding: 10px 10px; border-bottom: 1px solid #333355; color: #DDDDFF; }
+  .mult-table td.hi { color: var(--ff); font-weight: 600; }
+  .mult-table tr:last-child td { border-bottom: none; }
+  .countries { margin-top: 20px; font-size: 12px; color: #7777AA; line-height: 1.7; }
+
+  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+  .benefit-item { background: var(--white); border: 1.5px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+  .benefit-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .benefit-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+  .benefit-tag { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 2px 7px; border-radius: 2px; background: var(--gold-bg); color: var(--gold); }
+
+  .steps { list-style: none; display: flex; flex-direction: column; }
+  .step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  .step:last-child { border-bottom: none; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--ff); color: var(--white); font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-body { font-size: 14px; color: var(--ink); padding-top: 5px; line-height: 1.5; }
+
+  .cta-footer { background: var(--ff); color: var(--white); padding: 48px 24px; text-align: center; margin-top: 48px; }
+  .cta-footer h2 { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 4vw, 34px); margin-bottom: 10px; }
+  .cta-footer p { font-size: 14px; opacity: .88; margin-bottom: 24px; }
+  .cta-footer a { display: inline-block; background: var(--white); color: var(--ff); font-weight: 700; font-size: 14px; padding: 13px 30px; border-radius: 4px; text-decoration: none; margin: 0 6px 8px; }
+  .cta-footer a.ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.5); }
+
+  .divider { height: 1px; background: var(--rule); margin: 0; }
+  @media (max-width: 500px) { .entry-box { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('zh')">中文</button>
+  <button class="lang-btn" onclick="setLang('th')">ภาษาไทย</button>
+  <button class="lang-btn" onclick="setLang('id')">Bahasa Indonesia</button>
+  <button class="lang-btn" onclick="setLang('vi')">Tiếng Việt</button>
+  <button class="lang-btn" onclick="setLang('ko')">한국어</button>
+</div>
+
+<header class="header">
+  <div class="header-badge" data-key="badge">SEA Market · 2026</div>
+  <h1>HubSpot Solutions<br><span data-key="h1span">Partner Program</span></h1>
+  <p class="sub" data-key="sub">Membership, tiers & commission — Southeast Asia</p>
+  <a href="mailto:dang@hubspot.com" class="header-cta" data-key="cta_email">Email Daniel →</a>
+  <a href="https://calendar.app.google/pMvjfQm5zyniSN4f6" class="header-cta ghost" target="_blank" data-key="cta_book">Book Time →</a>
+</header>
+
+<main>
+<div class="container">
+
+  <!-- TIERS -->
+  <div class="section">
+    <div class="section-label" data-key="lbl_tiers">Tiers</div>
+    <h2 class="section-title" data-key="ttl_tiers">5 Partner Tiers</h2>
+    <table class="tiers-table">
+      <thead>
+        <tr>
+          <th data-key="th_tier">Tier</th>
+          <th data-key="th_src">Sourced Pts</th>
+          <th data-key="th_total">Total Pts</th>
+          <th data-key="th_grr">GRR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="tier-name"><span class="tier-dot dot-elite"></span>Elite</div></td><td>2,750</td><td>11,000</td><td>≥80%</td></tr>
+        <tr><td><div class="tier-name"><span class="tier-dot dot-diamond"></span>Diamond</div></td><td>1,250</td><td>3,750</td><td>≥75%</td></tr>
+        <tr><td><div class="tier-name"><span class="tier-dot dot-platinum"></span>Platinum</div></td><td>425</td><td>1,275</td><td>—</td></tr>
+        <tr><td><div class="tier-name"><span class="tier-dot dot-gold"></span>Gold</div></td><td>115</td><td>345</td><td>—</td></tr>
+        <tr><td><div class="tier-name"><span class="tier-dot dot-entry"></span><span data-key="tier_entry">Solutions Partner</span></div></td><td>—</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- COMMISSION -->
+  <div class="section">
+    <div class="section-label" data-key="lbl_comm">Revenue Share</div>
+    <h2 class="section-title" data-key="ttl_comm">Commission Structure</h2>
+    <div class="commission-grid">
+      <div class="commission-card highlight">
+        <div class="comm-pct">20%</div>
+        <div class="comm-title" data-key="comm1_title">Sourced Deal Commission</div>
+        <div class="comm-desc" data-key="comm1_desc">On all partner-sourced MRR including upsell, for 3 years of the customer's license.</div>
+        <div class="comm-note" data-key="comm1_note">Partner matching starts at Gold+</div>
+      </div>
+      <div class="commission-card upmarket">
+        <div class="comm-pct">20%</div>
+        <div class="comm-title" data-key="comm2_title">Upmarket Referral</div>
+        <div class="comm-desc" data-key="comm2_desc">Assisted deals ≥ $3K MRR, Professional or Enterprise tier, for new or existing customers.</div>
+        <div class="comm-note" data-key="comm2_note">Requires Platinum+ and CRM Implementation Accreditation. Valid 1 year from sale date.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- SEA MULTIPLIER -->
+  <div class="section">
+    <div class="multiplier-box">
+      <div class="section-label" data-key="lbl_sea">SEA Advantage</div>
+      <div class="mult-2x">2×</div>
+      <div class="mult-sub" data-key="mult_sub">Points multiplier for all SEA market deals</div>
+      <table class="mult-table">
+        <thead>
+          <tr>
+            <th data-key="mt_type">Deal Type</th>
+            <th data-key="mt_std">Standard per $100</th>
+            <th style="color:var(--ff);" data-key="mt_sea">SEA per $100</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-key="mt_src">Sourced deal (you bring the customer)</td>
+            <td>3 pts</td><td class="hi">6 pts</td>
+          </tr>
+          <tr>
+            <td data-key="mt_ast">Assisted deal (HubSpot-sourced, you help close)</td>
+            <td>3 pts</td><td class="hi">6 pts</td>
+          </tr>
+          <tr>
+            <td data-key="mt_mgd">Managed (servicing existing portal)</td>
+            <td>1 pt</td><td class="hi">2 pts</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- POINTS ESTIMATOR -->
+      <div style="margin-top:28px;background:#12122A;border-radius:8px;padding:24px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;color:var(--ff);margin-bottom:12px;text-transform:uppercase;" data-key="est_title">Points Estimator</div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+          <label style="font-size:13px;color:#AAAACC;" data-key="est_label">Monthly deal value (USD)</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="color:#AAAACC;font-size:16px;">$</span>
+            <input id="dealVal" type="number" value="1000" min="100" step="100"
+              style="width:110px;background:#1E1E40;border:1px solid #333355;border-radius:4px;padding:8px 10px;color:#fff;font-size:15px;font-family:inherit;outline:none;" oninput="calcPts()">
+            <span style="color:#AAAACC;font-size:13px;" data-key="est_mrr">/mo MRR</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;">
+              <div style="font-size:10px;color:#7777AA;margin-bottom:4px;letter-spacing:.04em;" data-key="card_src_std">SOURCED — STD</div>
+              <div id="r1" style="font-size:24px;font-weight:700;color:#AAAACC;">30 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;" data-key="rate_3">3 pts per $100</div>
+            </div>
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;border:1px solid #FF7A5933;">
+              <div style="font-size:10px;color:var(--ff);margin-bottom:4px;letter-spacing:.04em;" data-key="card_src_sea">SOURCED — SEA</div>
+              <div id="r2" style="font-size:24px;font-weight:700;color:var(--ff);">60 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;" data-key="rate_6">6 pts per $100</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;">
+              <div style="font-size:10px;color:#7777AA;margin-bottom:4px;letter-spacing:.04em;" data-key="card_ast_std">ASSISTED — STD</div>
+              <div id="r3" style="font-size:24px;font-weight:700;color:#AAAACC;">30 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;" data-key="rate_3b">3 pts per $100</div>
+            </div>
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;border:1px solid #FF7A5933;">
+              <div style="font-size:10px;color:var(--ff);margin-bottom:4px;letter-spacing:.04em;" data-key="card_ast_sea">ASSISTED — SEA</div>
+              <div id="r4" style="font-size:24px;font-weight:700;color:var(--ff);">60 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;" data-key="rate_6b">6 pts per $100</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;">
+              <div style="font-size:10px;color:#7777AA;margin-bottom:4px;letter-spacing:.04em;" data-key="card_mgd_std">MANAGED — STD</div>
+              <div id="r5" style="font-size:24px;font-weight:700;color:#AAAACC;">10 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;" data-key="rate_1">1 pt per $100</div>
+            </div>
+            <div style="background:#1E1E40;border-radius:6px;padding:14px 16px;border:1px solid #FF7A5933;">
+              <div style="font-size:10px;color:var(--ff);margin-bottom:4px;letter-spacing:.04em;" data-key="card_mgd_sea">MANAGED — SEA</div>
+              <div id="r6" style="font-size:24px;font-weight:700;color:var(--ff);">20 pts</div>
+              <div style="font-size:11px;color:#555577;margin-top:2px;" data-key="rate_2">2 pts per $100</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#555577;" data-key="est_note">Points = (MRR ÷ 100) × rate. SEA rate is 2× standard.</div>
+      </div>
+
+      <div class="countries"><strong style="color:#AAAACC;" data-key="countries_label">Qualifying countries:</strong> Bangladesh · Brunei · Cambodia · China/Taiwan · Hong Kong · India · Indonesia · Laos · Malaysia · Maldives · Mongolia · Myanmar · Nepal · Pakistan · Philippines · Singapore · South Korea · Sri Lanka · Thailand · Timor-Leste · Vietnam</div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- MEMBERSHIP ENTRY -->
+  <div class="section">
+    <div class="section-label" data-key="lbl_entry">Entry</div>
+    <h2 class="section-title" data-key="ttl_entry">Membership & Requirements</h2>
+    <div class="entry-box">
+      <div>
+        <div class="entry-price">$400<small>/mo USD</small></div>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:6px;max-width:200px;" data-key="entry_note">Net HubSpot subscription meets or exceeds $400/month USD after discounts</p>
+      </div>
+      <div class="entry-reqs">
+        <p data-key="entry_qualify">To qualify, partners must:</p>
+        <ul class="req-list">
+          <li data-key="req1">Sign the HubSpot Solutions Partner Agreement (HSPPA)</li>
+          <li data-key="req2">Complete the Solutions Partner certification</li>
+          <li data-key="req3">Maintain &gt;0 sourced points in a trailing 12-month period</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- BENEFITS -->
+  <div class="section">
+    <div class="section-label" data-key="lbl_benefits">What You Get</div>
+    <h2 class="section-title" data-key="ttl_benefits">Key Partner Benefits</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b1t">Co-sell with HubSpot Sales</div>
+        <div class="benefit-desc" data-key="b1d">Register deals to protect commissions. SEA-based GS teams co-sell alongside you.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b2t">Dedicated PDM</div>
+        <div class="benefit-desc" data-key="b2d">Your own Partner Development Manager — SE support on qualifying complex deals.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b3t">Waive Client Onboarding Fees</div>
+        <div class="benefit-desc" data-key="b3d">Deliver HubSpot onboarding yourself — removes the mandatory fee for your clients.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b4t">Demo Portal + Monthly AI Credits</div>
+        <div class="benefit-desc" data-key="b4d">1× Enterprise demo account plus credits to demo AI agents and features to prospects.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b5t">Free Partner Seat</div>
+        <div class="benefit-desc" data-key="b5d">Access client portals for delivery at no cost to you or your client.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b6t">Partner Matching Referrals</div>
+        <div class="benefit-desc" data-key="b6d">HubSpot GS & CSMs connect customers to you based on tier, accreditations & track record.</div>
+        <span class="benefit-tag">Gold+</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b7t">Co-marketing (MDF)</div>
+        <div class="benefit-desc" data-key="b7d">Apply for co-marketing funds and joint campaigns to build local pipeline.</div>
+        <span class="benefit-tag">Platinum+</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b8t">Solutions Directory Listing</div>
+        <div class="benefit-desc" data-key="b8d">Get discovered by SEA buyers — showcase industry, geography & accreditations on HubSpot.com.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" data-key="b9t">Exclusive Training & Certs</div>
+        <div class="benefit-desc" data-key="b9d">Partner-gated Academy content. CRM Implementation accreditation unlocks higher commissions.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top:48px;"></div>
+
+  <!-- HOW TO JOIN -->
+  <div class="section">
+    <div class="section-label" data-key="lbl_start">Getting Started</div>
+    <h2 class="section-title" data-key="ttl_start">How to Join or Upgrade</h2>
+    <ul class="steps">
+      <li class="step"><div class="step-num">1</div><div class="step-body" data-key="s1">Check your current HubSpot product subscription level</div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-body" data-key="s2">If ≥ USD $400/mo net — membership fee is waived automatically</div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-body" data-key="s3">Enroll in the partner program</div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-body" data-key="s4">Get your PDM assigned and start registering deals</div></li>
+      <li class="step"><div class="step-num">5</div><div class="step-body" data-key="s5">Get CRM Implementation Accredited to unlock the Upmarket 20% commission</div></li>
+      <li class="step"><div class="step-num">6</div><div class="step-body" data-key="s6">Sell to SEA customers — earn 2× points toward higher tiers</div></li>
+    </ul>
+  </div>
+
+</div>
+</main>
+
+<footer class="cta-footer">
+  <h2 data-key="footer_h2">Ready to Join or Upgrade?</h2>
+  <p>Daniel Ng · Regional Lead, Partnerships SEA</p>
+  <a href="mailto:dang@hubspot.com" data-key="footer_email">Email Daniel</a>
+  <a href="https://calendar.app.google/pMvjfQm5zyniSN4f6" target="_blank" data-key="footer_book">Book Time</a>
+  <a href="https://hubspot.com/partners/solutions" class="ghost" target="_blank" data-key="footer_learn">Learn More</a>
+  <p style="margin-top:20px;font-size:11px;opacity:.55;">HubSpot Solutions Partner Program 2026 · SEA Market · hubspot.com/solutions-partners-tiers-and-benefits-2026</p>
+</footer>
+
+<script>
+const T = {
+  en: {
+    badge:"SEA Market · 2026", h1span:"Partner Program", sub:"Membership, tiers & commission — Southeast Asia",
+    cta_email:"Email Daniel →", cta_book:"Book Time →",
+    lbl_tiers:"Tiers", ttl_tiers:"5 Partner Tiers",
+    th_tier:"Tier", th_src:"Sourced Pts", th_total:"Total Pts", th_grr:"GRR", tier_entry:"Solutions Partner",
+    lbl_comm:"Revenue Share", ttl_comm:"Commission Structure",
+    comm1_title:"Sourced Deal Commission", comm1_desc:"On all partner-sourced MRR including upsell, for 3 years of the customer's license.", comm1_note:"Partner matching starts at Gold+",
+    comm2_title:"Upmarket Referral", comm2_desc:"Assisted deals ≥ $3K MRR, Professional or Enterprise tier, for new or existing customers.", comm2_note:"Requires Platinum+ and CRM Implementation Accreditation. Valid 1 year from sale date.",
+    lbl_sea:"SEA Advantage", mult_sub:"Points multiplier for all SEA market deals",
+    mt_type:"Deal Type", mt_std:"Standard per $100", mt_sea:"SEA per $100",
+    mt_src:"Sourced deal (you bring the customer)", mt_ast:"Assisted deal (HubSpot-sourced, you help close)", mt_mgd:"Managed (servicing existing portal)",
+    est_title:"Points Estimator", est_label:"Monthly deal value (USD)", est_mrr:"/mo MRR", est_note:"Points = (MRR ÷ 100) × rate. SEA rate is 2× standard.",
+    card_src_std:"SOURCED — STD", card_src_sea:"SOURCED — SEA", card_ast_std:"ASSISTED — STD", card_ast_sea:"ASSISTED — SEA", card_mgd_std:"MANAGED — STD", card_mgd_sea:"MANAGED — SEA",
+    rate_3:"3 pts per $100", rate_6:"6 pts per $100", rate_3b:"3 pts per $100", rate_6b:"6 pts per $100", rate_1:"1 pt per $100", rate_2:"2 pts per $100",
+    countries_label:"Qualifying countries:",
+    lbl_entry:"Entry", ttl_entry:"Membership & Requirements", entry_note:"Net HubSpot subscription meets or exceeds $400/month USD after discounts",
+    entry_qualify:"To qualify, partners must:", req1:"Sign the HubSpot Solutions Partner Agreement (HSPPA)", req2:"Complete the Solutions Partner certification", req3:"Maintain >0 sourced points in a trailing 12-month period",
+    lbl_benefits:"What You Get", ttl_benefits:"Key Partner Benefits",
+    b1t:"Co-sell with HubSpot Sales", b1d:"Register deals to protect commissions. SEA-based GS teams co-sell alongside you.",
+    b2t:"Dedicated PDM", b2d:"Your own Partner Development Manager — SE support on qualifying complex deals.",
+    b3t:"Waive Client Onboarding Fees", b3d:"Deliver HubSpot onboarding yourself — removes the mandatory fee for your clients.",
+    b4t:"Demo Portal + Monthly AI Credits", b4d:"1× Enterprise demo account plus credits to demo AI agents and features to prospects.",
+    b5t:"Free Partner Seat", b5d:"Access client portals for delivery at no cost to you or your client.",
+    b6t:"Partner Matching Referrals", b6d:"HubSpot GS & CSMs connect customers to you based on tier, accreditations & track record.",
+    b7t:"Co-marketing (MDF)", b7d:"Apply for co-marketing funds and joint campaigns to build local pipeline.",
+    b8t:"Solutions Directory Listing", b8d:"Get discovered by SEA buyers — showcase industry, geography & accreditations on HubSpot.com.",
+    b9t:"Exclusive Training & Certs", b9d:"Partner-gated Academy content. CRM Implementation accreditation unlocks higher commissions.",
+    lbl_start:"Getting Started", ttl_start:"How to Join or Upgrade",
+    s1:"Check your current HubSpot product subscription level", s2:"If ≥ USD $400/mo net — membership fee is waived automatically", s3:"Enroll in the partner program", s4:"Get your PDM assigned and start registering deals", s5:"Get CRM Implementation Accredited to unlock the Upmarket 20% commission", s6:"Sell to SEA customers — earn 2× points toward higher tiers",
+    footer_h2:"Ready to Join or Upgrade?", footer_email:"Email Daniel", footer_book:"Book Time", footer_learn:"Learn More"
+  },
+  zh: {
+    badge:"东南亚市场 · 2026", h1span:"合作伙伴计划", sub:"会员资格、级别与佣金 — 东南亚",
+    cta_email:"发邮件给 Daniel →", cta_book:"预约时间 →",
+    lbl_tiers:"级别", ttl_tiers:"5 个合作伙伴级别",
+    th_tier:"级别", th_src:"自带客户积分", th_total:"总积分", th_grr:"GRR", tier_entry:"解决方案合作伙伴",
+    lbl_comm:"收入分成", ttl_comm:"佣金结构",
+    comm1_title:"自带客户成交佣金", comm1_desc:"适用于合作伙伴自带客户产生的所有 MRR（含增购），客户许可证前 3 年有效。", comm1_note:"Gold 级及以上开启合作伙伴匹配",
+    comm2_title:"高端客户推荐佣金", comm2_desc:"协助成交的交易 ≥ $3K MRR，Professional 或 Enterprise 版本，新老客户均适用。", comm2_note:"需达到 Platinum+ 且获得 CRM 实施认证，自成交之日起 1 年内有效。",
+    lbl_sea:"东南亚优势", mult_sub:"所有东南亚市场交易享受积分倍增",
+    mt_type:"交易类型", mt_std:"标准市场（每 $100）", mt_sea:"东南亚市场（每 $100）",
+    mt_src:"自带客户成交", mt_ast:"协助成交（HubSpot 开源，你协助完成）", mt_mgd:"托管（服务现有客户门户）",
+    est_title:"积分估算器", est_label:"每月交易金额（美元）", est_mrr:"/月 MRR", est_note:"积分 = (MRR ÷ 100) × 倍率。东南亚倍率是标准的 2 倍。",
+    card_src_std:"自带 — 标准", card_src_sea:"自带 — 东南亚", card_ast_std:"协助 — 标准", card_ast_sea:"协助 — 东南亚", card_mgd_std:"托管 — 标准", card_mgd_sea:"托管 — 东南亚",
+    rate_3:"每 $100 = 3 积分", rate_6:"每 $100 = 6 积分", rate_3b:"每 $100 = 3 积分", rate_6b:"每 $100 = 6 积分", rate_1:"每 $100 = 1 积分", rate_2:"每 $100 = 2 积分",
+    countries_label:"适用国家和地区：",
+    lbl_entry:"加入条件", ttl_entry:"会员资格与要求", entry_note:"HubSpot 产品净订阅费用（折后）须达到或超过每月 400 美元",
+    entry_qualify:"合作伙伴须满足以下条件：", req1:"签署 HubSpot 解决方案合作伙伴协议（HSPPA）", req2:"完成解决方案合作伙伴认证", req3:"在过去 12 个月内保持自带客户积分大于 0",
+    lbl_benefits:"合作权益", ttl_benefits:"核心合作伙伴权益",
+    b1t:"与 HubSpot 销售团队联合销售", b1d:"注册商机保护佣金，东南亚本地 GS 团队全程协作。",
+    b2t:"专属合作伙伴发展经理（PDM）", b2d:"配备专属 PDM，为复杂交易提供销售工程支持。",
+    b3t:"免除客户入门培训费", b3d:"由您亲自为客户提供 HubSpot 入门培训，免除强制收费。",
+    b4t:"演示门户 + 每月 AI 积分", b4d:"1 个 Enterprise 演示账户及每月 AI 积分，用于向潜在客户展示 AI 功能。",
+    b5t:"免费合作伙伴席位", b5d:"零成本访问客户门户，为客户提供交付服务。",
+    b6t:"合作伙伴匹配推荐", b6d:"HubSpot GS 和 CSM 根据级别、认证及业绩将客户匹配给您。",
+    b7t:"联合营销（MDF）", b7d:"申请联合营销资金，开展联合活动拓展本地业务管道。",
+    b8t:"解决方案目录收录", b8d:"在 HubSpot.com 展示您的行业专长、所在地区和认证，吸引东南亚买家主动联系。",
+    b9t:"专属培训与认证", b9d:"访问合作伙伴专属 Academy 内容，获取 CRM 实施认证可解锁更高佣金。",
+    lbl_start:"如何开始", ttl_start:"加入或升级步骤",
+    s1:"确认当前 HubSpot 产品订阅级别", s2:"若净月费 ≥ $400 美元，会员费自动免除", s3:"注册合作伙伴计划", s4:"获得 PDM 分配并开始注册商机", s5:"获得 CRM 实施认证，解锁高端客户 20% 佣金", s6:"向东南亚客户销售，以 2 倍积分速率迈向更高级别",
+    footer_h2:"准备好加入或升级了吗？", footer_email:"发邮件给 Daniel", footer_book:"预约时间", footer_learn:"了解更多"
+  },
+  th: {
+    badge:"ตลาด SEA · 2026", h1span:"โปรแกรมพาร์ทเนอร์", sub:"สมาชิกภาพ ระดับ และค่าคอมมิชชัน — เอเชียตะวันออกเฉียงใต้",
+    cta_email:"อีเมลหา Daniel →", cta_book:"จองเวลาพูดคุย →",
+    lbl_tiers:"ระดับ", ttl_tiers:"5 ระดับพาร์ทเนอร์",
+    th_tier:"ระดับ", th_src:"คะแนน Sourced", th_total:"คะแนนรวม", th_grr:"GRR", tier_entry:"Solutions Partner",
+    lbl_comm:"ส่วนแบ่งรายได้", ttl_comm:"โครงสร้างค่าคอมมิชชัน",
+    comm1_title:"ค่าคอมมิชชัน Sourced Deal", comm1_desc:"สำหรับ MRR ทั้งหมดที่พาร์ทเนอร์นำลูกค้ามาเอง รวมถึง Upsell ตลอด 3 ปีของใบอนุญาต", comm1_note:"การจับคู่พาร์ทเนอร์เริ่มที่ระดับ Gold ขึ้นไป",
+    comm2_title:"ค่าคอมมิชชัน Upmarket Referral", comm2_desc:"ดีลที่ช่วยปิด ≥ $3K MRR ระดับ Professional หรือ Enterprise ทั้งลูกค้าใหม่และเก่า", comm2_note:"ต้องเป็น Platinum+ และได้รับการรับรอง CRM Implementation มีผลภายใน 1 ปีนับจากวันขาย",
+    lbl_sea:"ข้อได้เปรียบใน SEA", mult_sub:"ตัวคูณคะแนนสำหรับดีลในตลาด SEA ทั้งหมด",
+    mt_type:"ประเภทดีล", mt_std:"มาตรฐาน ต่อ $100", mt_sea:"SEA ต่อ $100",
+    mt_src:"Sourced deal (คุณนำลูกค้ามาเอง)", mt_ast:"Assisted deal (HubSpot หาลูกค้า คุณช่วยปิด)", mt_mgd:"Managed (ดูแล Portal ลูกค้าเดิม)",
+    est_title:"คำนวณคะแนน", est_label:"มูลค่าดีลต่อเดือน (USD)", est_mrr:"/เดือน MRR", est_note:"คะแนน = (MRR ÷ 100) × อัตรา อัตรา SEA มากกว่ามาตรฐาน 2 เท่า",
+    card_src_std:"SOURCED — STD", card_src_sea:"SOURCED — SEA", card_ast_std:"ASSISTED — STD", card_ast_sea:"ASSISTED — SEA", card_mgd_std:"MANAGED — STD", card_mgd_sea:"MANAGED — SEA",
+    rate_3:"3 คะแนน ต่อ $100", rate_6:"6 คะแนน ต่อ $100", rate_3b:"3 คะแนน ต่อ $100", rate_6b:"6 คะแนน ต่อ $100", rate_1:"1 คะแนน ต่อ $100", rate_2:"2 คะแนน ต่อ $100",
+    countries_label:"ประเทศที่ได้รับสิทธิ์:",
+    lbl_entry:"เงื่อนไขการเข้าร่วม", ttl_entry:"สมาชิกภาพและข้อกำหนด", entry_note:"ค่าสมัครจะได้รับการยกเว้นหากค่าสมัครสมาชิก HubSpot สุทธิ ≥ $400/เดือน (หลังหักส่วนลด)",
+    entry_qualify:"พาร์ทเนอร์ต้องปฏิบัติตามเงื่อนไขต่อไปนี้:", req1:"ลงนามในสัญญา HubSpot Solutions Partner Agreement (HSPPA)", req2:"ผ่านการรับรอง Solutions Partner", req3:"รักษาคะแนน Sourced มากกว่า 0 ในช่วง 12 เดือนที่ผ่านมา",
+    lbl_benefits:"สิทธิประโยชน์", ttl_benefits:"สิทธิประโยชน์หลักของพาร์ทเนอร์",
+    b1t:"ขายร่วมกับทีมขาย HubSpot", b1d:"ลงทะเบียนดีลเพื่อปกป้องค่าคอมมิชชัน ทีม GS ในพื้นที่ SEA ร่วมขายด้วยกัน",
+    b2t:"PDM เฉพาะตัว", b2d:"Partner Development Manager ส่วนตัว พร้อมสนับสนุนดีลที่ซับซ้อน",
+    b3t:"ยกเว้นค่า Onboarding ของลูกค้า", b3d:"ให้บริการ Onboarding เองเพื่อยกเว้นค่าธรรมเนียมบังคับสำหรับลูกค้าของคุณ",
+    b4t:"Demo Portal + AI Credits รายเดือน", b4d:"บัญชี Demo ระดับ Enterprise 1 บัญชี พร้อม Credits สำหรับสาธิต AI ให้กับ Prospect",
+    b5t:"Partner Seat ฟรี", b5d:"เข้าถึง Portal ของลูกค้าเพื่อส่งมอบงานโดยไม่มีค่าใช้จ่าย",
+    b6t:"การจับคู่ Referral กับพาร์ทเนอร์", b6d:"HubSpot GS และ CSM จะส่งลูกค้ามาให้คุณตามระดับ การรับรอง และประวัติผลงาน",
+    b7t:"Co-marketing (MDF)", b7d:"ขอรับทุน Co-marketing และร่วมจัดแคมเปญเพื่อสร้าง Pipeline ในพื้นที่",
+    b8t:"รายชื่อใน Solutions Directory", b8d:"ให้ลูกค้า SEA ค้นพบคุณ — แสดงอุตสาหกรรม พื้นที่ และการรับรองบน HubSpot.com",
+    b9t:"การฝึกอบรมและใบรับรองพิเศษ", b9d:"เข้าถึงเนื้อหา Academy สำหรับพาร์ทเนอร์โดยเฉพาะ การรับรอง CRM Implementation ปลดล็อคคอมมิชชันสูงขึ้น",
+    lbl_start:"เริ่มต้นอย่างไร", ttl_start:"วิธีเข้าร่วมหรืออัปเกรด",
+    s1:"ตรวจสอบระดับ Subscription ปัจจุบันของคุณกับ HubSpot", s2:"หาก ≥ $400/เดือน สุทธิ — ค่าสมาชิกจะได้รับการยกเว้นอัตโนมัติ", s3:"สมัครเข้าร่วมโปรแกรมพาร์ทเนอร์", s4:"รับ PDM และเริ่มลงทะเบียนดีล", s5:"ขอรับการรับรอง CRM Implementation เพื่อปลดล็อคค่าคอมมิชชัน Upmarket 20%", s6:"ขายให้ลูกค้า SEA — รับคะแนน 2 เท่าเพื่อขยับสู่ระดับที่สูงขึ้น",
+    footer_h2:"พร้อมเข้าร่วมหรืออัปเกรดแล้วหรือยัง?", footer_email:"อีเมลหา Daniel", footer_book:"จองเวลาพูดคุย", footer_learn:"เรียนรู้เพิ่มเติม"
+  },
+  id: {
+    badge:"Pasar SEA · 2026", h1span:"Program Mitra", sub:"Keanggotaan, tingkatan & komisi — Asia Tenggara",
+    cta_email:"Email Daniel →", cta_book:"Jadwalkan Waktu →",
+    lbl_tiers:"Tingkatan", ttl_tiers:"5 Tingkatan Mitra",
+    th_tier:"Tingkatan", th_src:"Poin Sourced", th_total:"Total Poin", th_grr:"GRR", tier_entry:"Solutions Partner",
+    lbl_comm:"Bagi Hasil", ttl_comm:"Struktur Komisi",
+    comm1_title:"Komisi Sourced Deal", comm1_desc:"Untuk semua MRR yang dibawa mitra termasuk upsell, selama 3 tahun lisensi pelanggan.", comm1_note:"Pencocokan mitra mulai dari Gold+",
+    comm2_title:"Referral Upmarket", comm2_desc:"Deal yang dibantu ≥ $3K MRR, tier Professional atau Enterprise, pelanggan baru maupun lama.", comm2_note:"Memerlukan Platinum+ dan Akreditasi CRM Implementation. Berlaku 1 tahun sejak tanggal penjualan.",
+    lbl_sea:"Keunggulan SEA", mult_sub:"Pengganda poin untuk semua deal di pasar SEA",
+    mt_type:"Jenis Deal", mt_std:"Standar per $100", mt_sea:"SEA per $100",
+    mt_src:"Sourced deal (Anda membawa pelanggan)", mt_ast:"Assisted deal (HubSpot sumber, Anda bantu tutup)", mt_mgd:"Managed (layani portal pelanggan yang ada)",
+    est_title:"Estimasi Poin", est_label:"Nilai deal per bulan (USD)", est_mrr:"/bln MRR", est_note:"Poin = (MRR ÷ 100) × tarif. Tarif SEA adalah 2× standar.",
+    card_src_std:"SOURCED — STD", card_src_sea:"SOURCED — SEA", card_ast_std:"ASSISTED — STD", card_ast_sea:"ASSISTED — SEA", card_mgd_std:"MANAGED — STD", card_mgd_sea:"MANAGED — SEA",
+    rate_3:"3 poin per $100", rate_6:"6 poin per $100", rate_3b:"3 poin per $100", rate_6b:"6 poin per $100", rate_1:"1 poin per $100", rate_2:"2 poin per $100",
+    countries_label:"Negara yang memenuhi syarat:",
+    lbl_entry:"Bergabung", ttl_entry:"Keanggotaan & Persyaratan", entry_note:"Langganan produk HubSpot bersih memenuhi atau melebihi $400/bulan USD setelah diskon",
+    entry_qualify:"Untuk memenuhi syarat, mitra harus:", req1:"Menandatangani HubSpot Solutions Partner Agreement (HSPPA)", req2:"Menyelesaikan sertifikasi Solutions Partner", req3:"Mempertahankan poin sourced >0 dalam periode 12 bulan terakhir",
+    lbl_benefits:"Yang Anda Dapatkan", ttl_benefits:"Keuntungan Utama Mitra",
+    b1t:"Co-sell dengan Tim Penjualan HubSpot", b1d:"Daftarkan deal untuk melindungi komisi. Tim GS berbasis SEA menjual bersama Anda.",
+    b2t:"PDM Khusus", b2d:"Partner Development Manager Anda sendiri — dukungan SE untuk deal kompleks.",
+    b3t:"Bebaskan Biaya Onboarding Klien", b3d:"Lakukan onboarding HubSpot sendiri — menghapus biaya wajib untuk klien Anda.",
+    b4t:"Demo Portal + AI Credits Bulanan", b4d:"1 akun demo Enterprise plus kredit untuk demo agen AI dan fitur kepada prospek.",
+    b5t:"Partner Seat Gratis", b5d:"Akses portal klien untuk pengiriman tanpa biaya bagi Anda maupun klien.",
+    b6t:"Referral Partner Matching", b6d:"HubSpot GS & CSM menghubungkan pelanggan kepada Anda berdasarkan tier, akreditasi & rekam jejak.",
+    b7t:"Co-marketing (MDF)", b7d:"Ajukan dana co-marketing dan kampanye bersama untuk membangun pipeline lokal.",
+    b8t:"Listing di Solutions Directory", b8d:"Ditemukan oleh pembeli SEA — tampilkan industri, wilayah & akreditasi di HubSpot.com.",
+    b9t:"Pelatihan & Sertifikasi Eksklusif", b9d:"Konten Academy khusus mitra. Akreditasi CRM Implementation membuka komisi lebih tinggi.",
+    lbl_start:"Mulai", ttl_start:"Cara Bergabung atau Naik Tingkat",
+    s1:"Periksa level langganan produk HubSpot Anda saat ini", s2:"Jika ≥ USD $400/bln bersih — biaya keanggotaan otomatis dibebaskan", s3:"Daftarkan diri ke program mitra", s4:"Dapatkan PDM yang ditugaskan dan mulai mendaftarkan deal", s5:"Dapatkan Akreditasi CRM Implementation untuk membuka komisi Upmarket 20%", s6:"Jual kepada pelanggan SEA — raih poin 2× untuk naik ke tingkatan lebih tinggi",
+    footer_h2:"Siap Bergabung atau Naik Tingkat?", footer_email:"Email Daniel", footer_book:"Jadwalkan Waktu", footer_learn:"Pelajari Lebih Lanjut"
+  },
+  vi: {
+    badge:"Thị trường SEA · 2026", h1span:"Chương trình Đối tác", sub:"Thành viên, cấp độ & hoa hồng — Đông Nam Á",
+    cta_email:"Email cho Daniel →", cta_book:"Đặt lịch gặp →",
+    lbl_tiers:"Cấp độ", ttl_tiers:"5 Cấp độ Đối tác",
+    th_tier:"Cấp độ", th_src:"Điểm Sourced", th_total:"Tổng điểm", th_grr:"GRR", tier_entry:"Solutions Partner",
+    lbl_comm:"Chia sẻ doanh thu", ttl_comm:"Cơ cấu hoa hồng",
+    comm1_title:"Hoa hồng Sourced Deal", comm1_desc:"Cho toàn bộ MRR do đối tác tự mang lại bao gồm upsell, trong 3 năm đầu của hợp đồng khách hàng.", comm1_note:"Ghép cặp đối tác bắt đầu từ Gold+",
+    comm2_title:"Giới thiệu Upmarket", comm2_desc:"Deal hỗ trợ ≥ $3K MRR, gói Professional hoặc Enterprise, khách hàng mới hoặc cũ.", comm2_note:"Yêu cầu Platinum+ và Chứng nhận CRM Implementation. Có hiệu lực 1 năm kể từ ngày bán.",
+    lbl_sea:"Lợi thế SEA", mult_sub:"Nhân đôi điểm cho tất cả giao dịch tại thị trường SEA",
+    mt_type:"Loại giao dịch", mt_std:"Tiêu chuẩn mỗi $100", mt_sea:"SEA mỗi $100",
+    mt_src:"Sourced deal (bạn tự mang khách)", mt_ast:"Assisted deal (HubSpot tìm khách, bạn hỗ trợ chốt)", mt_mgd:"Managed (quản lý portal khách hàng hiện có)",
+    est_title:"Ước tính điểm", est_label:"Giá trị giao dịch hàng tháng (USD)", est_mrr:"/tháng MRR", est_note:"Điểm = (MRR ÷ 100) × tỷ lệ. Tỷ lệ SEA gấp 2× tiêu chuẩn.",
+    card_src_std:"SOURCED — TC", card_src_sea:"SOURCED — SEA", card_ast_std:"ASSISTED — TC", card_ast_sea:"ASSISTED — SEA", card_mgd_std:"MANAGED — TC", card_mgd_sea:"MANAGED — SEA",
+    rate_3:"3 điểm mỗi $100", rate_6:"6 điểm mỗi $100", rate_3b:"3 điểm mỗi $100", rate_6b:"6 điểm mỗi $100", rate_1:"1 điểm mỗi $100", rate_2:"2 điểm mỗi $100",
+    countries_label:"Quốc gia đủ điều kiện:",
+    lbl_entry:"Điều kiện tham gia", ttl_entry:"Thành viên & Yêu cầu", entry_note:"Phí đăng ký HubSpot ròng đạt hoặc vượt $400/tháng USD sau chiết khấu",
+    entry_qualify:"Để đủ điều kiện, đối tác phải:", req1:"Ký Hợp đồng Đối tác Giải pháp HubSpot (HSPPA)", req2:"Hoàn thành chứng chỉ Solutions Partner", req3:"Duy trì điểm sourced >0 trong vòng 12 tháng gần nhất",
+    lbl_benefits:"Quyền lợi", ttl_benefits:"Quyền lợi chính của đối tác",
+    b1t:"Bán hàng cùng đội ngũ HubSpot", b1d:"Đăng ký deal để bảo vệ hoa hồng. Đội GS tại SEA đồng hành cùng bạn.",
+    b2t:"PDM chuyên trách", b2d:"Quản lý Phát triển Đối tác riêng — hỗ trợ kỹ thuật bán hàng cho các deal phức tạp.",
+    b3t:"Miễn phí Onboarding cho khách hàng", b3d:"Tự thực hiện onboarding HubSpot — xóa bỏ phí bắt buộc cho khách hàng của bạn.",
+    b4t:"Demo Portal + AI Credits hàng tháng", b4d:"1 tài khoản demo Enterprise cùng credits để demo AI agents cho khách hàng tiềm năng.",
+    b5t:"Partner Seat miễn phí", b5d:"Truy cập portal khách hàng để triển khai dịch vụ mà không mất phí.",
+    b6t:"Ghép cặp giới thiệu đối tác", b6d:"HubSpot GS & CSM kết nối khách hàng với bạn dựa trên cấp độ, chứng nhận & thành tích.",
+    b7t:"Co-marketing (MDF)", b7d:"Đăng ký quỹ co-marketing và chiến dịch chung để xây dựng pipeline tại địa phương.",
+    b8t:"Danh sách trong Solutions Directory", b8d:"Được khách hàng SEA tìm thấy — trưng bày ngành, khu vực & chứng nhận trên HubSpot.com.",
+    b9t:"Đào tạo & Chứng chỉ độc quyền", b9d:"Nội dung Academy dành riêng cho đối tác. Chứng nhận CRM Implementation mở khóa hoa hồng cao hơn.",
+    lbl_start:"Bắt đầu", ttl_start:"Cách tham gia hoặc nâng cấp",
+    s1:"Kiểm tra cấp độ đăng ký sản phẩm HubSpot hiện tại của bạn", s2:"Nếu ≥ USD $400/tháng ròng — phí thành viên sẽ tự động được miễn", s3:"Đăng ký chương trình đối tác", s4:"Được phân công PDM và bắt đầu đăng ký deal", s5:"Đạt Chứng nhận CRM Implementation để mở khóa hoa hồng Upmarket 20%", s6:"Bán cho khách hàng SEA — tích điểm gấp 2× để tiến lên cấp độ cao hơn",
+    footer_h2:"Sẵn sàng tham gia hoặc nâng cấp?", footer_email:"Email cho Daniel", footer_book:"Đặt lịch gặp", footer_learn:"Tìm hiểu thêm"
+  }
+  ,
+  ko: {
+    badge:"SEA 시장 · 2026", h1span:"파트너 프로그램", sub:"멤버십, 등급 및 커미션 — 동남아시아",
+    cta_email:"Daniel에게 이메일 →", cta_book:"미팅 예약 →",
+    lbl_tiers:"등급", ttl_tiers:"5가지 파트너 등급",
+    th_tier:"등급", th_src:"소싱 포인트", th_total:"총 포인트", th_grr:"GRR", tier_entry:"솔루션 파트너",
+    lbl_comm:"수익 분배", ttl_comm:"커미션 구조",
+    comm1_title:"소싱 딜 커미션", comm1_desc:"파트너가 직접 유치한 모든 MRR(업셀 포함)에 대해 고객 라이선스 3년간 적용됩니다.", comm1_note:"파트너 매칭은 Gold 등급 이상부터 시작",
+    comm2_title:"업마켓 리퍼럴", comm2_desc:"MRR ≥ $3K, Professional 또는 Enterprise 등급의 지원 딜, 신규 및 기존 고객 모두 해당.", comm2_note:"Platinum+ 및 CRM Implementation 인증 필요. 판매일로부터 1년간 유효.",
+    lbl_sea:"SEA 시장 우위", mult_sub:"SEA 시장 모든 딜에 포인트 2배 적용",
+    mt_type:"딜 유형", mt_std:"표준 $100당", mt_sea:"SEA $100당",
+    mt_src:"소싱 딜 (파트너가 직접 고객 유치)", mt_ast:"지원 딜 (HubSpot 발굴, 파트너 클로징 지원)", mt_mgd:"관리형 (기존 고객 포털 서비스)",
+    est_title:"포인트 계산기", est_label:"월 딜 금액 (USD)", est_mrr:"/월 MRR", est_note:"포인트 = (MRR ÷ 100) × 배율. SEA 배율은 표준의 2배입니다.",
+    card_src_std:"소싱 — 표준", card_src_sea:"소싱 — SEA", card_ast_std:"지원 — 표준", card_ast_sea:"지원 — SEA", card_mgd_std:"관리 — 표준", card_mgd_sea:"관리 — SEA",
+    rate_3:"$100당 3포인트", rate_6:"$100당 6포인트", rate_3b:"$100당 3포인트", rate_6b:"$100당 6포인트", rate_1:"$100당 1포인트", rate_2:"$100당 2포인트",
+    countries_label:"적용 국가:",
+    lbl_entry:"가입 조건", ttl_entry:"멤버십 및 요건", entry_note:"할인 후 HubSpot 순 구독료가 월 $400 USD 이상이면 멤버십 비용 면제",
+    entry_qualify:"가입 요건:", req1:"HubSpot 솔루션 파트너 계약서(HSPPA) 서명", req2:"솔루션 파트너 인증 완료", req3:"최근 12개월 이내 소싱 포인트 0 초과 유지",
+    lbl_benefits:"혜택", ttl_benefits:"핵심 파트너 혜택",
+    b1t:"HubSpot 영업팀과 공동 판매", b1d:"딜 등록으로 커미션 보호. SEA 현지 GS팀이 함께 영업합니다.",
+    b2t:"전담 PDM", b2d:"전담 파트너 개발 매니저 배정 — 복잡한 딜에 대한 SE 지원 제공.",
+    b3t:"고객 온보딩 비용 면제", b3d:"파트너가 직접 HubSpot 온보딩 제공 — 고객의 필수 비용 면제.",
+    b4t:"데모 포털 + 월간 AI 크레딧", b4d:"Enterprise 데모 계정 1개 및 AI 에이전트·기능 시연을 위한 월간 크레딧 제공.",
+    b5t:"파트너 시트 무료 제공", b5d:"파트너와 고객 모두 비용 없이 고객 포털에 접근하여 서비스 제공.",
+    b6t:"파트너 매칭 리퍼럴", b6d:"HubSpot GS 및 CSM이 등급·인증·실적을 기반으로 고객을 파트너에게 연결.",
+    b7t:"공동 마케팅 (MDF)", b7d:"공동 마케팅 펀드 신청 및 현지 파이프라인 구축을 위한 공동 캠페인 진행.",
+    b8t:"솔루션 디렉토리 등재", b8d:"HubSpot.com에서 SEA 구매자가 파트너를 발견할 수 있도록 산업·지역·인증 정보 노출.",
+    b9t:"독점 교육 및 인증", b9d:"파트너 전용 Academy 콘텐츠 제공. CRM Implementation 인증으로 높은 커미션 잠금 해제.",
+    lbl_start:"시작하기", ttl_start:"가입 또는 등급 업그레이드 방법",
+    s1:"현재 HubSpot 제품 구독 등급 확인", s2:"순 월정액 ≥ $400 USD이면 멤버십 비용 자동 면제", s3:"파트너 프로그램 등록", s4:"PDM 배정 후 딜 등록 시작", s5:"CRM Implementation 인증 취득으로 업마켓 20% 커미션 잠금 해제", s6:"SEA 고객에게 판매 — 2배 포인트로 상위 등급 달성",
+    footer_h2:"가입 또는 업그레이드 준비가 되셨나요?", footer_email:"Daniel에게 이메일", footer_book:"미팅 예약", footer_learn:"더 알아보기"
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.lang-btn[onclick="setLang(\''+lang+'\')"]').classList.add('active');
+  const d = T[lang];
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const k = el.getAttribute('data-key');
+    if (d[k] !== undefined) el.textContent = d[k];
+  });
+}
+
+function calcPts() {
+  var v = parseFloat(document.getElementById('dealVal').value) || 0;
+  var u = v / 100;
+  document.getElementById('r1').textContent = Math.round(u * 3) + ' pts';
+  document.getElementById('r2').textContent = Math.round(u * 6) + ' pts';
+  document.getElementById('r3').textContent = Math.round(u * 3) + ' pts';
+  document.getElementById('r4').textContent = Math.round(u * 6) + ' pts';
+  document.getElementById('r5').textContent = Math.round(u * 1) + ' pts';
+  document.getElementById('r6').textContent = Math.round(u * 2) + ' pts';
+}
+</script>
+
+</body>
+</html>
